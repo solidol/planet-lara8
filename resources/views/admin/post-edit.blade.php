@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -7,7 +7,7 @@
 
 
 
-<form action="<?= route('post.update', ['postId' => $post->id]) ?>" method="POST">
+<form action="<?= route('admin.post.update', ['postId' => $post->id]) ?>" method="POST">
     @csrf
 
     <div class="row">

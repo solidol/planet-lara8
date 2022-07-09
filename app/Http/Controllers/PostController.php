@@ -14,7 +14,7 @@ class PostController extends Controller {
 
     public function index() {
         $posts = Post::orderBy('id', 'desc')->paginate(10);
-        return view('post-index', [
+        return view('posts.post-index', [
             'posts' => $posts
         ]);
     }
@@ -22,24 +22,30 @@ class PostController extends Controller {
     public function show($postId) {
         $post = Post::findOrFail($postId);
         $currentCategory = PostCategory::find($post->post_category_id);
-        return view('post-show', ['post' => $post, 'currentCat' => $currentCategory]);
+        return view('posts.post-show', ['post' => $post, 'currentCat' => $currentCategory]);
+    }
+
+    public function adminShow($postId) {
+        $post = Post::findOrFail($postId);
+        $currentCategory = PostCategory::find($post->post_category_id);
+        return view('admin.post-show', ['post' => $post, 'currentCat' => $currentCategory]);
     }
 
     public function showBySlug($postSlug) {
         $post = Post::where('slug', $postSlug)->firstOrFail();
         $currentCategory = PostCategory::find($post->post_category_id);
-        return view('post-show', ['post' => $post, 'currentCat' => $currentCategory]);        
+        return view('posts.post-show', ['post' => $post, 'currentCat' => $currentCategory]);        
     }
 
     public function edit($postId) {
         $post = Post::findOrFail($postId);
         $categories = PostCategory::all();
-        return view('admin-post-edit', ['post' => $post, 'categories' => $categories]);
+        return view('admin.post-edit', ['post' => $post, 'categories' => $categories]);
     }
 
     public function create($catId) {
         $categories = PostCategory::all();
-        return view('admin-post-create', ['catId' => $catId, 'categories' => $categories]);
+        return view('admin.post-create', ['catId' => $catId, 'categories' => $categories]);
     }
 
     public function store(Request $request) {
@@ -84,7 +90,7 @@ class PostController extends Controller {
 
         // redirect
         // Session::flash('message', 'Successfully updated post!');
-        return redirect()->route('post-show', ['postId' => $post->id]);
+        return redirect()->route('admin.post-show', ['postId' => $post->id]);
     }
 
     public function update(Request $request, $postId) {
@@ -127,7 +133,7 @@ class PostController extends Controller {
 
         // redirect
         // Session::flash('message', 'Successfully updated post!');
-        return redirect()->route('post-show', ['postId' => $postId]);
+        return redirect()->route('admin.post.show', ['postId' => $postId]);
         //  }
     }
 

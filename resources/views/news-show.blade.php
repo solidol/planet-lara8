@@ -25,7 +25,7 @@
                 <h2 class="col-8">
                     <?= $post->title ?></a>
                 </h2>
-                <p class="col-4 post-meta-date">January 1, 2021</p>
+                <p class="col-4 post-meta-date"><?=date('d.m.Y',strtotime($post->created_at))?></p>
             </div>
             <div class="row post-image">
                 <a href="">

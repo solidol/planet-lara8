@@ -2,8 +2,8 @@
 
 @section('header')
 <div class="text-white">
-    <h1 class="mb-3"><?=$post->title?></h1>
-    <h4 class="mb-3"><?=$currentCat->title ?></h4>
+    <h1 class="mb-3"><?= $post->title ?></h1>
+    <h4 class="mb-3"><?= $currentCat->title ?></h4>
 </div>
 @endsection
 
@@ -20,24 +20,23 @@
 <div class="row">
     <div class="col-md-8">
 
+        <article id="art-<?= $post->id ?>" class="blog-post">
+            <div class="row post-header">
+                <h2 class="col-8">
+                    <?= $post->title ?></a>
+                </h2>
+                <p class="col-4 post-meta-date"><?=date('d.m.Y',strtotime($post->created_at))?></p>
+            </div>
+            <div class="row post-image">
+                <a href="">
+                    <img src="">
+                </a>
+            </div>
+            <div class="row post-paper">
+                <?= $post->content ?>
+            </div>
 
-            <article id="art-<?= $post->id ?>" class="blog-post">
-                <div class="row post-header">
-                    <h2 class="col-8" style="display:none;">
-                        <?= $post->title ?></a>
-                    </h2>
-                    <p class="col-4 post-meta-date">January 1, 2021</p>
-                </div>
-                <div class="row post-image">
-                    <a href="">
-                        <img src="">
-                    </a>
-                </div>
-                <div class="row post-paper">
-                    <?=$post->content?>
-                </div>
-
-            </article>
+        </article>
     </div>
 
     <div class="col-md-4">

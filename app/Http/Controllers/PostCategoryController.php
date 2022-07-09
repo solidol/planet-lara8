@@ -76,19 +76,22 @@ class PostCategoryController extends Controller
         ]);
     }   
     public function showBlog() {
-        return $this->showBySlug('blog');
+        return $this->showBySlug('blog','posts.post-index');
     }   
     public function showNews() {
-        return $this->showBySlug('news','news-index');
+        return $this->showBySlug('news','posts.post-index');
+    }   
+    public function adminShowNews() {
+        return $this->showBySlug('news','admin.post-index');
     }   
     public function showPrograms() {
         return $this->showBySlug('programs','program-index');
     }   
     public function showProjects() {
-        return $this->showBySlug('projects','news-index');
+        return $this->showBySlug('projects','posts.post-index');
     }   
     public function showSessions() {
-        return $this->showBySlug('sessions','news-index');
+        return $this->showBySlug('sessions','posts.post-index');
     }   
     
     
