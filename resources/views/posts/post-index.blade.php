@@ -20,7 +20,7 @@
             </h2>
             <span class="col-3 blog-post-meta">{{date('d.m.Y',strtotime($post->created_at))}}</span>
         </div>
-        <div class="row">
+        <div class="row post-content">
             <div class="col-4 post-image">
                 <img src="/images/{{$post->postimg}}">
             </div>

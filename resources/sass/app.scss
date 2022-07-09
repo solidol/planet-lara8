@@ -4,10 +4,13 @@
 // Variables
 @import 'variables';
 
-//admin panel
-@import 'admin';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+
+//admin panel
+@import 'admin';
+
+//quest front
+@import 'guest';
 

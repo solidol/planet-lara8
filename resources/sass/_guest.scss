@@ -1,7 +1,33 @@
-.row-hovered :hover{
+.row-hovered :hover {
     background-color: darkgrey;
 }
 
-.sidebar-fixed{
+.sidebar-fixed {
     top: 5rem;
+}
+
+.post-image img {
+    max-width: 100%;
+}
+
+body {
+    color: #B0B0B0;
+    background-color: #151515;
+}
+
+h1,
+h2,
+h3,
+h4,
+h1 a,
+h2 a,
+h3 a
+{
+color: #00AEEF;
+text-decoration: none;
+}
+
+.post-content {
+    text-indent: 1.5rem;
+    text-align: justify;
 }
