@@ -3,10 +3,6 @@
 @section('content')
 
 
-
-
-
-
 <form action="<?= route('admin.post.update', ['postId' => $post->id]) ?>" method="POST">
     @csrf
 
@@ -60,8 +56,6 @@
 
     <button class="btn btn-primary"  type="submit">ОК</button>
 </form>
-
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 
 <script>
