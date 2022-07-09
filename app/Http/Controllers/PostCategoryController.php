@@ -50,6 +50,13 @@ class PostCategoryController extends Controller
     {
         $currentCategory = PostCategory::find($catId);
         $posts = $currentCategory->listPosts()->orderBy('id', 'desc')->paginate(20);
+        foreach ($posts as $key=>$post) {
+            $post_data = explode("\n", $posts[$key]->content);
+            $posts[$key]->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+            $post_data = explode("\n", $posts[$key]->altpreview);
+            $posts[$key]->altpreview = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+        }
+        
         $categories = PostCategory::getSub($catId);
         return view('post-index', [
             'posts' => $posts,
@@ -65,36 +72,50 @@ class PostCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     //public function show(PostCategory $postCategory)
-    public function showBySlug($catSlug, $view='news-index') {
+    public function showBySlug($catSlug, $view = 'news-index')
+    {
         $currentCategory = PostCategory::where('slug', $catSlug)->first();
         $posts = $currentCategory->listPosts()->orderBy('id', 'desc')->paginate(20);
+        foreach ($posts as $key=>$post) {
+            $post_data = explode("\n", $posts[$key]->content);
+            $posts[$key]->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+            $post_data = explode("\n", $posts[$key]->altpreview);
+            $posts[$key]->altpreview = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+        }
+
         $categories = PostCategory::getSub(PostCategory::where('slug', $catSlug)->first()->id);
         return view($view, [
             'posts' => $posts,
             'categories' => $categories,
             'currentCat' => $currentCategory
         ]);
-    }   
-    public function showBlog() {
-        return $this->showBySlug('blog','posts.post-index');
-    }   
-    public function showNews() {
-        return $this->showBySlug('news','posts.post-index');
-    }   
-    public function adminShowNews() {
-        return $this->showBySlug('news','admin.post-index');
-    }   
-    public function showPrograms() {
-        return $this->showBySlug('programs','posts.post-index');
-    }   
-    public function showProjects() {
-        return $this->showBySlug('projects','posts.post-index');
-    }   
-    public function showSessions() {
-        return $this->showBySlug('sessions','posts.post-index');
-    }   
-    
-    
+    }
+    public function showBlog()
+    {
+        return $this->showBySlug('blog', 'posts.post-index');
+    }
+    public function showNews()
+    {
+        return $this->showBySlug('news', 'posts.post-index');
+    }
+    public function adminShowNews()
+    {
+        return $this->showBySlug('news', 'admin.post-index');
+    }
+    public function showPrograms()
+    {
+        return $this->showBySlug('programs', 'posts.post-index');
+    }
+    public function showProjects()
+    {
+        return $this->showBySlug('projects', 'posts.post-index');
+    }
+    public function showSessions()
+    {
+        return $this->showBySlug('sessions', 'posts.post-index');
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.

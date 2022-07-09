@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PostCategory;
+use App\Http\Controllers\PostCategoryController;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +26,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $currentCategory = PostCategory::where('slug', 'news')->first();
+        $posts = $currentCategory->listPosts()->orderBy('id', 'desc')->paginate(5);
+        $categories = PostCategory::getSub(PostCategory::where('slug', 'news')->first()->id);
+
+        $sessCategory = PostCategory::where('slug', 'sessions')->first();
+        $sess = $sessCategory->listPosts()->orderBy('id', 'desc')->paginate(6);
+
+        foreach ($posts as $key => $post) {
+            $post_data = explode("\n", $posts[$key]->content);
+            $posts[$key]->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+            $post_data = explode("\n", $posts[$key]->altpreview);
+            $posts[$key]->altpreview = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+        }
+        foreach ($sess as $key => $post) {
+            $post_data = explode("\n", $sess[$key]->content);
+            $sess[$key]->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+            $post_data = explode("\n", $sess[$key]->altpreview);
+            $sess[$key]->altpreview = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+        }
+
+        return view('home', [
+            'sessions' => $sess,
+            'posts' => $posts,
+            'categories' => $categories,
+            'currentCat' => $currentCategory
+        ]);
     }
 }

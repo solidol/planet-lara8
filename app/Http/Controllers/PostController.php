@@ -10,45 +10,65 @@ use App\Models\PostCategory;
 use Auth;
 use Illuminate\Support\Str;
 
-class PostController extends Controller {
+class PostController extends Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $posts = Post::orderBy('id', 'desc')->paginate(10);
         return view('posts.post-index', [
             'posts' => $posts
         ]);
     }
 
-    public function show($postId) {
+    public function show($postId)
+    {
         $post = Post::findOrFail($postId);
+
+        $post_data = explode("\n", $post->content);
+        $post->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+
         $currentCategory = PostCategory::find($post->post_category_id);
         return view('posts.post-show', ['post' => $post, 'currentCat' => $currentCategory]);
     }
 
-    public function adminShow($postId) {
+    public function adminShow($postId)
+    {
         $post = Post::findOrFail($postId);
+
+        $post_data = explode("\n", $post->content);
+        $post->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+
         $currentCategory = PostCategory::find($post->post_category_id);
         return view('admin.post-show', ['post' => $post, 'currentCat' => $currentCategory]);
     }
 
-    public function showBySlug($postSlug) {
+    public function showBySlug($postSlug)
+    {
         $post = Post::where('slug', $postSlug)->firstOrFail();
+
+        $post_data = explode("\n", $post->content);
+        $post->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+
         $currentCategory = PostCategory::find($post->post_category_id);
-        return view('posts.post-show', ['post' => $post, 'currentCat' => $currentCategory]);        
+        return view('posts.post-show', ['post' => $post, 'currentCat' => $currentCategory]);
     }
 
-    public function edit($postId) {
+    public function edit($postId)
+    {
         $post = Post::findOrFail($postId);
         $categories = PostCategory::all();
         return view('admin.post-edit', ['post' => $post, 'categories' => $categories]);
     }
 
-    public function create($catId) {
+    public function create($catId)
+    {
         $categories = PostCategory::all();
         return view('admin.post-create', ['catId' => $catId, 'categories' => $categories]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         /*
           // validate
           // read more on validation at http://laravel.com/docs/validation
@@ -93,7 +113,8 @@ class PostController extends Controller {
         return redirect()->route('admin.post-show', ['postId' => $post->id]);
     }
 
-    public function update(Request $request, $postId) {
+    public function update(Request $request, $postId)
+    {
         /*
          * 
          * 
@@ -137,7 +158,8 @@ class PostController extends Controller {
         //  }
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         // delete
         $shark = shark::find($id);
         $shark->delete();
@@ -146,5 +168,4 @@ class PostController extends Controller {
         Session::flash('message', 'Successfully deleted the shark!');
         return Redirect::to('sharks');
     }
-
 }

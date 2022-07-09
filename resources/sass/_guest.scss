@@ -6,8 +6,13 @@
     top: 5rem;
 }
 
+.post-image{
+    text-align: center;
+}
 .post-image img {
     max-width: 100%;
+    min-width: 80%;
+    margin: auto;
 }
 
 body {
@@ -21,13 +26,21 @@ h3,
 h4,
 h1 a,
 h2 a,
-h3 a
-{
-color: #00AEEF;
-text-decoration: none;
+h3 a {
+    color: #00AEEF;
+    text-decoration: none;
 }
 
-.post-content {
+.post-paper {
     text-indent: 1.5rem;
     text-align: justify;
+    padding: 0.5rem;
+}
+.post-paper p{
+    margin: 0;
+}
+
+article {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }

@@ -34,7 +34,7 @@
         <img src="/images/{{$post->postimg}}">
     </div>
     <div class="row post-paper">
-        {{$post->content}}
+        <?=$post->content?>
     </div>
 
 </article>
