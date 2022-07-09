@@ -10,14 +10,6 @@
 
 @section('content')
 
-
-@auth
-<div class="post-add">
-    <a href="<?= route('admin.post.create', ['catId' => $currentCat->id ?? '']) ?>" class="button">New</a>
-</div>
-@endauth
-
-
 <article id="art-<?= $post->id ?>" class="blog-post">
     <div class="row post-header">
         <h2 class="col-8">

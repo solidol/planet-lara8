@@ -7,16 +7,7 @@
 </div>
 @endsection
 
-
 @section('content')
-
-
-@auth
-<div class="post-add">
-    <a href="<?= route('admin.post.create', ['catId' => $currentCat->id ?? '']) ?>" class="button">New</a>
-</div>
-@endauth
-
 
 <?php foreach ($posts as $post) : ?>
 
@@ -41,27 +32,13 @@
 
 <?php endforeach; ?>
 
+
+
 <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">2022</a></li>
-        <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#">2021</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">2020</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
+    <?php
+    echo $posts->onEachSide(5)->links();
+    ?>
 </nav>
-
-
-<?php
-//echo $posts->render();
-?>
-</div>
 
 
 @endsection

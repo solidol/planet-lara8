@@ -8,21 +8,20 @@
 
 
 
-        <form action="<?= route('post.store') ?>" method="POST"> 
+        <form action="<?= route('admin.post.store') ?>" method="POST">
             @csrf
             <div>
                 <input type="text" name="title" value="">
             </div>
             <div>
-                <input type="text" name="slug" value="">     
+                <input type="text" name="slug" value="">
             </div>
             <div>
                 <select name="category_id">
-                    <?php foreach ($categories as $catItem): ?>
-                    <option value="<?= $catItem->id ?>" 
-                        <?= ($catItem->id==$catId)?'selected="selected"':'' ?>>
-                    <?= $catItem->title ?>
-                    </option>
+                    <?php foreach ($categories as $catItem) : ?>
+                        <option value="<?= $catItem->id ?>" <?= ($catItem->id == $catId) ? 'selected="selected"' : '' ?>>
+                            <?= $catItem->title ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -36,7 +35,7 @@
                 <textarea class="richedit" name="alterpreview"></textarea>
             </div>
             <div>
-                <textarea class="richedit" name="content"></textarea >    
+                <textarea class="richedit" name="content"></textarea>
             </div>
 
 
@@ -58,7 +57,10 @@
                     'table emoticons template paste help'
                 ],
                 menu: {
-                    favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons'}
+                    favs: {
+                        title: 'My Favorites',
+                        items: 'code visualaid | searchreplace | emoticons'
+                    }
                 },
                 menubar: 'favs file edit view insert format tools table help',
 

@@ -49,7 +49,7 @@ class PostCategoryController extends Controller
     public function show($catId)
     {
         $currentCategory = PostCategory::find($catId);
-        $posts = $currentCategory->listPosts()->orderBy('id', 'desc')->paginate(10);
+        $posts = $currentCategory->listPosts()->orderBy('id', 'desc')->paginate(20);
         $categories = PostCategory::getSub($catId);
         return view('post-index', [
             'posts' => $posts,
@@ -67,7 +67,7 @@ class PostCategoryController extends Controller
     //public function show(PostCategory $postCategory)
     public function showBySlug($catSlug, $view='news-index') {
         $currentCategory = PostCategory::where('slug', $catSlug)->first();
-        $posts = $currentCategory->listPosts()->orderBy('id', 'desc')->paginate(10);
+        $posts = $currentCategory->listPosts()->orderBy('id', 'desc')->paginate(20);
         $categories = PostCategory::getSub(PostCategory::where('slug', $catSlug)->first()->id);
         return view($view, [
             'posts' => $posts,
@@ -85,7 +85,7 @@ class PostCategoryController extends Controller
         return $this->showBySlug('news','admin.post-index');
     }   
     public function showPrograms() {
-        return $this->showBySlug('programs','program-index');
+        return $this->showBySlug('programs','posts.post-index');
     }   
     public function showProjects() {
         return $this->showBySlug('projects','posts.post-index');

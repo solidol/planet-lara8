@@ -41,6 +41,26 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.post.create', ['catId' => $currentCat->id ?? '0']) }}" class="button">Новий запис</a>
+                        </li>
+                        @endauth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('news.show') }}">Новини</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('blog.show') }}">Блоґ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('programs.show') }}">Програми</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('projects.show') }}">Проєкти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('sessions.show') }}">Сеанси</a>
+                        </li>
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
@@ -48,11 +68,6 @@
                         </li>
                         @endif
 
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -64,7 +79,7 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
+                                <a class="dropdown-item" href="{{ route('admin.news.show') }}">Адмінпанель</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -78,7 +93,36 @@
 
         <main class="py-4">
             <div class="container">
-                @yield('content')
+                <div class="row m-5">
+                    <div class="col-md-8 col-lg-9 col-xl-10">
+                        @yield('content')
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-2">
+                        <div class="position-sticky sidebar-fixed">
+                            <div class="p-4">
+                                <h4>Архів</h4>
+                                <ol class="list-unstyled mb-0">
+                                    <li><a href="#">March 2021</a></li>
+                                    <li><a href="#">February 2021</a></li>
+                                    <li><a href="#">January 2021</a></li>
+                                    <li><a href="#">December 2020</a></li>
+                                    <li><a href="#">November 2020</a></li>
+                                    <li><a href="#">October 2020</a></li>
+                                    <li><a href="#">September 2020</a></li>
+                                    <li><a href="#">August 2020</a></li>
+                                    <li><a href="#">July 2020</a></li>
+                                    <li><a href="#">June 2020</a></li>
+                                    <li><a href="#">May 2020</a></li>
+                                    <li><a href="#">April 2020</a></li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
             </div>
         </main>
     </div>

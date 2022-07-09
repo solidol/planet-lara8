@@ -21,6 +21,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/', 'PostCategoryController@showNews')->name('news.show');
+Route::get('/home', 'PostCategoryController@showNews')->name('news.show');
 Route::get('/news', 'PostCategoryController@showNews')->name('news.show');
 Route::get('/blog', 'PostCategoryController@showBlog')->name('blog.show');
 Route::get('/programs', 'PostCategoryController@showPrograms')->name('programs.show');
