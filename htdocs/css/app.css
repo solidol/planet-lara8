@@ -10256,27 +10256,32 @@ textarea.form-control-lg {
   background-color: darkgrey;
 }
 
-.row-hovered :hover {
-  background-color: darkgrey;
+.admin-left-navbar li {
+  background-color: grey;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin: 0.1rem;
+}
+
+.admin-left-navbar li a {
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+  font-size: 120%;
+}
+
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+  padding: 0;
 }
 
 .sidebar-fixed {
   top: 5rem;
 }
 
-.post-image {
-  text-align: center;
-}
-
-.post-image img {
-  max-width: 100%;
-  min-width: 80%;
-  margin: auto;
-}
-
 body {
-  color: #B0B0B0;
   background-color: #151515;
+  color: #B0B0B0;
+  font-size: 12px;
 }
 
 h1, .h1,
@@ -10294,6 +10299,35 @@ h3 a,
 .h3 a {
   color: #00AEEF;
   text-decoration: none;
+  font-weight: 800;
+}
+
+h3, .h3,
+h4,
+.h4 {
+  font-size: 110%;
+}
+
+.navbar-custom {
+  --bs-bg-opacity: 0.7;
+  background-color: rgba(20, 26, 43, 0.7);
+  text-decoration: none;
+}
+
+.navbar-custom a.nav-link {
+  color: #00AEEF !important;
+  font-weight: 600;
+  font-size: 120%;
+}
+
+.post-image {
+  text-align: center;
+}
+
+.post-image img {
+  max-width: 100%;
+  min-width: 80%;
+  margin: auto;
 }
 
 .post-paper {
@@ -10309,4 +10343,35 @@ h3 a,
 article {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.session-text p {
+  padding: 0 0.2rem 0 0.2rem;
+  margin: 0;
+  text-align: justify;
+}
+
+.session-dow {
+  background-color: #00AEEF;
+  color: black;
+  font-weight: 900;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+}
+
+.session-date {
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  font-weight: 900;
+}
+
+.session-time {
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  font-weight: 900;
+}
+
+.session-day {
+  padding: 0.5rem;
+  margin: 1rem 0 1rem 0;
 }

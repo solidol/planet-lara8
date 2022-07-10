@@ -23,10 +23,10 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-md shadow-sm">
+        <nav class="navbar navbar-dark navbar-custom fixed-top navbar-expand-md shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{  route('home.show')  }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="/images/logo/headerlogo.svg">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -90,13 +90,39 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            <div class="container">
-                <div class="row m-5">
-                    <div class="col-md-8 col-lg-9 col-xl-10">
-                        @yield('content')
+        <main>
+            <div class="container-fluid">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="/images/banner/banner0.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/images/banner/banner1.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/images/banner/banner2.jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/images/banner/banner3.jpg" alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/images/banner/banner4.jpg" alt="Third slide">
+                        </div>
                     </div>
-                    <div class="col-md-4 col-lg-3 col-xl-2">
+                </div>
+
+                <script>
+                    $(document).ready(function() {
+                        $('.carousel').carousel({
+                            interval: 5000,
+                            ride: true
+                        });
+                    });
+                </script>
+                @yield('banner')
+                <div class="row m-5">
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-2">
                         <div class="position-sticky sidebar-fixed">
                             <div class="p-4">
                                 <h4>Архів</h4>
@@ -118,9 +144,9 @@
 
                         </div>
                     </div>
-
-
-
+                    <div class="col-sm-12 col-md-9 col-lg-9 col-xl-10">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
         </main>

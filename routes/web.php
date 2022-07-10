@@ -33,6 +33,10 @@ Route::get('/posts/{postSlug}', 'PostController@showBySlug')->name('post.showbys
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/news', 'PostCategoryController@adminShowNews')->name('admin.news.show');
+    Route::get('/admin/blog', 'PostCategoryController@adminShowBlog')->name('admin.blog.show');
+    Route::get('/admin/programs', 'PostCategoryController@adminShowPrograms')->name('admin.programs.show');
+    Route::get('/admin/projects', 'PostCategoryController@adminShowProjects')->name('admin.projects.show');
+    Route::get('/admin/sessions', 'PostCategoryController@adminShowSessions')->name('admin.sessions.show');
     Route::get('/admin/{catId}/create', 'PostController@create')->name('admin.post.create');
     Route::get('/admin/pid:{postId}/edit', 'PostController@edit')->name('admin.post.edit');
     Route::get('/admin/pid:{postId}', 'PostController@adminShow')->name('admin.post.show');

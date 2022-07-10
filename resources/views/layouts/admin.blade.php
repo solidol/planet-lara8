@@ -22,11 +22,11 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="admin">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{  route('home.show')  }}">
+                    <img src="/images/logo/admlogo.svg">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -83,23 +83,24 @@
                         <div class="position-sticky sidebar-fixed" style="top: 5rem;">
                             <div class="p-4">
                                 <h4>Меню</h4>
-                                <ol class="list-unstyled mb-0">
-                                    <li><a href="#">March 2021</a></li>
-                                    <li><a href="#">February 2021</a></li>
-                                    <li><a href="#">January 2021</a></li>
-                                    <li><a href="#">December 2020</a></li>
-                                    <li><a href="#">November 2020</a></li>
-                                    <li><a href="#">October 2020</a></li>
-                                    <li><a href="#">September 2020</a></li>
-                                    <li><a href="#">August 2020</a></li>
-                                    <li><a href="#">July 2020</a></li>
-                                    <li><a href="#">June 2020</a></li>
-                                    <li><a href="#">May 2020</a></li>
-                                    <li><a href="#">April 2020</a></li>
-                                </ol>
+                                <ul class="nav flex-column admin-left-navbar">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="{{ route('admin.news.show')}}">Новини</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin.blog.show')}}">Блоґ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin.programs.show')}}">Програми</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin.projects.show')}}">Проєкти</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin.sessions.show')}}">Сеанси</a>
+                                    </li>
+                                </ul>
                             </div>
-
-
                         </div>
                     </div>
                     <div class="col-md-9">

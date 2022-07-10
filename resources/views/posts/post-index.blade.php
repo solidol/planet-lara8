@@ -13,7 +13,7 @@
 <div class="row">
     <?php foreach ($posts as $post) : ?>
 
-        <article id="art-{{ $post->id }}" class="blog-post">
+        <article id="art-{{ $post->id }}" class="blog-post col-6">
             <div class="row post-header">
                 <div class="col-12 blog-post-meta">{{date('d.m.Y',strtotime($post->created_at))}}</div>
                 <h2 class="col-12 blog-post-title">
