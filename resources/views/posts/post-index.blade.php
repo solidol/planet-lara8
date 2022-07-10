@@ -9,7 +9,7 @@
 
 
 @section('content')
-
+<h1><?= $currentCat->title ?></h1>
 <div class="row">
     <?php foreach ($posts as $post) : ?>
 
