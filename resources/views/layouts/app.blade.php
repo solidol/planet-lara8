@@ -19,6 +19,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
 </head>
 
 <body class="front">
@@ -92,7 +94,7 @@
 
         <main>
             <div class="container-fluid">
-                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div id="carouselBanners" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img class="d-block w-100" src="/images/banner/banner0.jpg" alt="First slide">
@@ -114,8 +116,8 @@
 
                 <script>
                     $(document).ready(function() {
-                        $('.carousel').carousel({
-                            interval: 5000,
+                        $('#carouselBanners').carousel({
+                            interval: 4000,
                             ride: true
                         });
                     });

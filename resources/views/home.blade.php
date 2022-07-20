@@ -11,21 +11,21 @@
 <h2>СЕАНСИ ДЛЯ ВСІХ</h2>
 
 <div class="row">
-    <?php foreach ($sessions as $session) :
 
+    <?php
+    $days = array(
+        'НД',
+        'ПН',
+        'ВТ',
+        'СР',
+        'ЧТ',
+        'ПТ',
+        'СБ'
+    );
+    foreach ($sessions as $session) :
         $date = date_create($session->tg_date);
-        $days = array(
-            'НД',
-            'ПН',
-            'ВТ',
-            'СР',
-            'ЧТ',
-            'ПТ',
-            'СБ'
-        );
-
-
     ?>
+
         <article id="art-{{ $session->id }}" class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
             <div class="col-12 session-day">
                 <span class="session-dow"><?= $days[date_format($date, "w")] ?></span>
@@ -39,6 +39,7 @@
                 <?= $session->content ?>
             </div>
         </article>
+
     <?php endforeach; ?>
 </div>
 
@@ -47,13 +48,6 @@
 
 
 <div class="row">
-
-
-
-
-
-
-
     <?php
 
     foreach ($posts as $post) : ?>
@@ -84,5 +78,8 @@
 
 </div>
 
+<script>
+
+</script>
 
 @endsection
