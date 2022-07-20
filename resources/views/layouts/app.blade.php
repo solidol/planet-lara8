@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body class="front">
     <div id="app">
         <nav class="navbar navbar-dark navbar-custom fixed-top navbar-expand-md shadow-sm">
             <div class="container">

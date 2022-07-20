@@ -10,31 +10,30 @@
 @section('content')
 
 <h1><?= $currentCat->title ?></h1>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Назва</th>
+            <th scope="col">Дата створення</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($posts as $post) : ?>
+            <tr>
+                <td><?= $post->id ?></td>
+                <td><a class="col-1 adm-tab-string" href="<?= route('admin.post.show', ['postId' => $post->id]) ?>"><?= $post->title ?></a></td>
+                <td><?= date('d.m.Y', strtotime($post->created_at)) ?></td>
+                <td><a class="col-1 adm-tab-string" href="<?= route('admin.post.edit', ['postId' => $post->id]) ?>" class="button">Edit</a></td>
+                <td><a class="col-1 adm-tab-string" href="<?= route('admin.post.edit', ['postId' => $post->id]) ?>" class="button">Del</a></td>
+            </tr>
 
-<?php foreach ($posts as $post) : ?>
+        <?php endforeach; ?>
 
-
-    <div class="row row-hovered">
-        <span class="col-1 adm-tab-string">
-            <?= $post->id ?>
-        </span>
-        <span class="col-6 adm-tab-string">
-            <?= $post->title ?>
-        </span>
-        <span class="col-2 adm-tab-string">
-            <?= date('d.m.Y', strtotime($post->created_at)) ?>
-        </span>
-
-        <a class="col-1 adm-tab-string" href="<?= route('admin.post.show', ['postId' => $post->id]) ?>">Show</a>
-        <a class="col-1 adm-tab-string" href="<?= route('admin.post.edit', ['postId' => $post->id]) ?>" class="button">Edit</a>
-        <a class="col-1 adm-tab-string" href="<?= route('admin.post.edit', ['postId' => $post->id]) ?>" class="button">Del</a>
-    </div>
-
-
-
-<?php endforeach; ?>
-
-
+    </tbody>
+</table>
 
 <nav aria-label="Page navigation">
     <?php

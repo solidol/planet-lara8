@@ -10272,7 +10272,7 @@ textarea.form-control-lg {
 }
 
 .ck-editor__editable {
-  min-height: 500px;
+  min-height: 200px;
 }
 
 .container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
@@ -10283,7 +10283,7 @@ textarea.form-control-lg {
   top: 5rem;
 }
 
-body {
+body.front {
   background-color: #151515;
   color: #B0B0B0;
   font-size: 12px;

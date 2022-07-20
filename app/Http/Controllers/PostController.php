@@ -56,7 +56,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($postId);
         $categories = PostCategory::all();
-        return view('admin.post-edit', ['post' => $post, 'categories' => $categories]);
+        return view('admin.post-create', ['post' => $post, 'categories' => $categories, 'catId' => $post->post_category_id]);
     }
 
     public function create($catId)
@@ -112,9 +112,9 @@ class PostController extends Controller
 
         if ($request->hasFile('postimg')) {
 
-        //    $request->validate([
-        //        'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
-        //    ]);
+            //    $request->validate([
+            //        'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            //    ]);
             $post->postimg = $request->file('postimg')->store('images/uploads', 'public');
         } else {
             $post->postimg = 'images/services/no-image.png';

@@ -106,10 +106,6 @@ class PostCategoryController extends Controller
     {
         return $this->showBySlug('news', 'posts.post-index');
     }
-    public function adminShowNews()
-    {
-        return $this->showBySlug('news', 'admin.post-index');
-    }
     public function showPrograms()
     {
         return $this->showBySlug('programs', 'posts.post-index');
@@ -122,6 +118,28 @@ class PostCategoryController extends Controller
     {
         return $this->showBySlug('sessions', 'posts.post-index');
     }
+
+
+    public function adminShowBlog()
+    {
+        return $this->showBySlug('blog', 'admin.post-index');
+    }
+    public function adminShowNews()
+    {
+        return $this->showBySlug('news', 'admin.post-index');
+    }
+    public function adminShowPrograms()
+    {
+        return $this->showBySlug('programs', 'admin.post-index');
+    }
+    public function adminShowProjects()
+    {
+        return $this->showBySlug('projects', 'admin.post-index');
+    }
+    public function adminShowSessions()
+    {
+        return $this->showBySlug('sessions', 'admin.post-index');
+    }   
 
 
 
