@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('admin.post.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route($route)}}" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="hidden" id="inpPostId" name="id" class="form-control-plaintext" value="<?= isset($post->id) ? $post->id : '' ?>">
     <div class="row">

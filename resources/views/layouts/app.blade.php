@@ -121,11 +121,21 @@
                     });
                 </script>
                 @yield('banner')
+            </div>
+            <div class="container">
                 <div class="row m-5">
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-2">
+
+                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-9">
+                        @yield('content')
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
                         <div class="position-sticky sidebar-fixed">
                             <div class="p-4">
-                                <h4>Архів</h4>
+                                <h2>Онлайн оплата</h2>
+                                <p>Тепер сплатити за сеанс можна, перерахувавши кошти з вашого віртуального рахунку за посиланням: <a href="https://www.privat24.ua/rd/send_qr/liqpay_static_qr/qr_6fcdb890b8064aed9dbb9e175d9ec0cf">privat24</a></p>
+                            </div>
+                            <div class="p-4">
+                                <h2>Архів</h2>
                                 <ol class="list-unstyled mb-0">
                                     <li><a href="#">March 2021</a></li>
                                     <li><a href="#">February 2021</a></li>
@@ -143,9 +153,6 @@
                             </div>
 
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-md-9 col-lg-9 col-xl-10">
-                        @yield('content')
                     </div>
                 </div>
             </div>

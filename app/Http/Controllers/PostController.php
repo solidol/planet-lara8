@@ -56,13 +56,20 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($postId);
         $categories = PostCategory::all();
-        return view('admin.post-create', ['post' => $post, 'categories' => $categories, 'catId' => $post->post_category_id]);
+        return view('admin.post-create', 
+        ['post' => $post, 
+        'categories' => $categories, 
+        'catId' => $post->post_category_id,
+        'route' => 'admin.post.update'
+    ]);
     }
 
     public function create($catId)
     {
         $categories = PostCategory::all();
-        return view('admin.post-create', ['catId' => $catId, 'categories' => $categories]);
+        return view('admin.post-create', ['catId' => $catId, 
+        'categories' => $categories,
+        'route' => 'admin.post.store']);
     }
 
     public function store(Request $request)
@@ -126,7 +133,7 @@ class PostController extends Controller
         return redirect()->route('admin.post.show', ['postId' => $post->id]);
     }
 
-    public function update(Request $request, $postId)
+    public function update(Request $request)
     {
         /*
          * 
@@ -155,7 +162,7 @@ class PostController extends Controller
           ->withInput(Input::except('password'));
           } else { */
         // store
-        $post = Post::findOrFail($postId);
+        $post = Post::findOrFail($request->input('id'));
         $post->title = $request->input('title');
         $post->slug = $request->input('slug');
         $post->description = $request->input('description');
@@ -167,7 +174,7 @@ class PostController extends Controller
 
         // redirect
         // Session::flash('message', 'Successfully updated post!');
-        return redirect()->route('admin.post.show', ['postId' => $postId]);
+        return redirect()->route('admin.post.show', ['postId' => $request->input('id')]);
         //  }
     }
 

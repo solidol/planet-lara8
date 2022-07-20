@@ -40,8 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/{catId}/create', 'PostController@create')->name('admin.post.create');
     Route::get('/admin/pid:{postId}/edit', 'PostController@edit')->name('admin.post.edit');
     Route::get('/admin/pid:{postId}', 'PostController@show')->name('admin.post.show');
-    Route::post('/admin/pid:{postId}', 'PostController@update')->name('admin.post.update');
-    Route::post('/admin/new/store', 'PostController@store')->name('admin.post.store');
+    Route::post('/admin/post/update', 'PostController@update')->name('admin.post.update');
+    Route::post('/admin/post/store', 'PostController@store')->name('admin.post.store');
 });
 
 
