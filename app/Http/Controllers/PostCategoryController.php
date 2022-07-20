@@ -6,6 +6,8 @@ use App\Models\PostCategory;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isNull;
+
 class PostCategoryController extends Controller
 {
     /**
@@ -50,13 +52,16 @@ class PostCategoryController extends Controller
     {
         $currentCategory = PostCategory::find($catId);
         $posts = $currentCategory->listPosts()->orderBy('id', 'desc')->paginate(20);
-        foreach ($posts as $key=>$post) {
+        foreach ($posts as $key => $post) {
             $post_data = explode("\n", $posts[$key]->content);
             $posts[$key]->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
             $post_data = explode("\n", $posts[$key]->altpreview);
             $posts[$key]->altpreview = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+            if ($posts[$key]->postimg == '') {
+                $posts[$key]->postimg = 'images/services/no-image.png';
+            }
         }
-        
+
         $categories = PostCategory::getSub($catId);
         return view('post-index', [
             'posts' => $posts,
@@ -76,11 +81,14 @@ class PostCategoryController extends Controller
     {
         $currentCategory = PostCategory::where('slug', $catSlug)->first();
         $posts = $currentCategory->listPosts()->orderBy('id', 'desc')->paginate(20);
-        foreach ($posts as $key=>$post) {
+        foreach ($posts as $key => $post) {
             $post_data = explode("\n", $posts[$key]->content);
             $posts[$key]->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
             $post_data = explode("\n", $posts[$key]->altpreview);
             $posts[$key]->altpreview = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+            if ($posts[$key]->postimg == '') {
+                $posts[$key]->postimg = 'images/services/no-image.png';
+            }
         }
 
         $categories = PostCategory::getSub(PostCategory::where('slug', $catSlug)->first()->id);

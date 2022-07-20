@@ -60,7 +60,7 @@
             </div>
             <div class="row post-content">
                 <div class="col-4 post-image">
-                    <img src="/images/{{$post->postimg}}">
+                    <img src="/{{$post->postimg}}">
                 </div>
                 <div class="col-8 post-paper">
 

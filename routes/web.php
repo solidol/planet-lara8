@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/sessions', 'PostCategoryController@adminShowSessions')->name('admin.sessions.show');
     Route::get('/admin/{catId}/create', 'PostController@create')->name('admin.post.create');
     Route::get('/admin/pid:{postId}/edit', 'PostController@edit')->name('admin.post.edit');
-    Route::get('/admin/pid:{postId}', 'PostController@adminShow')->name('admin.post.show');
+    Route::get('/admin/pid:{postId}', 'PostController@show')->name('admin.post.show');
     Route::post('/admin/pid:{postId}', 'PostController@update')->name('admin.post.update');
     Route::post('/admin/new/store', 'PostController@store')->name('admin.post.store');
 });

@@ -18,9 +18,7 @@
         <p class="col-4 post-meta-date"><?= date('d.m.Y', strtotime($post->created_at)) ?></p>
     </div>
     <div class="row post-image">
-        <a href="">
-            <img src="">
-        </a>
+        <img src="/storage/{{$post->postimg}}">
     </div>
     <div class="row post-paper">
         <?= $post->content ?>

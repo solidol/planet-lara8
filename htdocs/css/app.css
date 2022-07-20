@@ -10259,8 +10259,8 @@ textarea.form-control-lg {
 .admin-left-navbar li {
   background-color: grey;
   padding: 0.5rem;
-  border-radius: 0.3rem;
-  margin: 0.1rem;
+  border-radius: 0.2rem;
+  margin: 0.2rem;
 }
 
 .admin-left-navbar li a {
@@ -10268,6 +10268,11 @@ textarea.form-control-lg {
   font-weight: 600;
   color: black;
   font-size: 120%;
+  display: inline-block;
+}
+
+.ck-editor__editable {
+  min-height: 500px;
 }
 
 .container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {

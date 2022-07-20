@@ -7,7 +7,7 @@
     background-color: grey;
     padding: 0.5rem;
     border-radius: 0.2rem;
-    margin:0.2rem;
+    margin: 0.2rem;
 }
 
 .admin-left-navbar li a {
@@ -16,4 +16,9 @@
     color: black;
     font-size: 120%;
     display: inline-block;
+}
+
+
+.ck-editor__editable {
+    min-height: 500px;
 }

@@ -30,12 +30,15 @@
         </div>
         @endauth
     </div>
-    <div class="row post-image">
-        <img src="/images/{{$post->postimg}}">
+    <div class="row">
+        <div class="col-4 post-image">
+            <img src="/storage/{{$post->postimg}}">
+        </div>
+        <div class="col-8 post-paper">
+            <?= $post->content ?>
+        </div>
     </div>
-    <div class="row post-paper">
-        <?=$post->content?>
-    </div>
+
 
 </article>
 

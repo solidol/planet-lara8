@@ -2,27 +2,19 @@
 
 @section('content')
 
-<form action="{{route('admin.post.store')}}" method="POST">
+<form action="{{route('admin.post.store')}}"  method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="row">
-        <div class="col-sm-5">
-            <label for="inpPostId">Ідентифікатор</label>
-            <input type="text" id="inpPostId" name="id" class="form-control-plaintext" readonly>
-        </div>
-        <div class="col-sm-7">
+        <div class="col-sm-6 form-group">
             <label for="inpPostTitle">Назва запису</label>
             <input type="text" name="title" id="inpPostTitle" class="form-control">
         </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-sm-5">
-            <label for="inpPostSlug">Рядковий ідентифікатор</label>
-            <input type="text" name="slug" id="inpPostSlug" class="form-control">
+        <div class="col-sm-3 form-group">
+            <label for="impPostImg">Зображення</label>
+            <input type="file" name="postimg" id="impPostImg" class="form-control">
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-3 form-group">
             <label for="inpPostCat">Категорія</label>
             <select name="category_id" id="inpPostCat" class="form-control">
                 <?php foreach ($categories as $catItem) : ?>
@@ -34,37 +26,56 @@
         </div>
     </div>
 
-    <div class="form-group row">
-        <label for="inpPostDesc" class="col-sm-2 col-form-label">Ключові слова</label>
-        <div class="col-sm-10">
-            <textarea id="inpPostDesc" class="form-control" name="description"></textarea>
 
+
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <label for="inpPostPrew">Попередній перегляд</label>
+            <textarea id="inpPostPrew" class="ckeditor" name="alterpreview"></textarea>
+        </div>
+        <div class="col-sm-6">
+            <label for="inpPostContent">Основний контент</label>
+            <textarea id="inpPostContent" class="ckeditor" name="content"></textarea>
         </div>
     </div>
-    <div class="row">
-        <label for="inpPostPrew">Попередній перегляд</label>
-        <textarea id="inpPostPrew" class="ckeditor" name="alterpreview"></textarea>
+
+
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <label for="inpPostDesc">Ключові слова</label>
+
+            <textarea id="inpPostDesc" class="form-control" name="description"></textarea>
+        </div>
+        <div class="col-sm-6">
+            <label for="inpPostSlug">Рядковий ідентифікатор</label>
+            <input type="text" name="slug" id="inpPostSlug" class="form-control">
+        </div>
     </div>
-    <div class="row">
-        <label for="inpPostContent">Основний контент</label>
-        <textarea id="inpPostContent" class="ckeditor" name="content"></textarea>
+
+
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <button class="btn btn-primary" type="submit">ОК</button>
+        </div>
     </div>
-
-
-
-
-    <button class="btn btn-primary"  type="submit">ОК</button>
 </form>
 
 
 <script>
     ClassicEditor
-        .create(document.querySelector('#inpPostPrew'))
+        .create(document.querySelector('#inpPostPrew'), {
+            'width': '95%', // 500 pixels wide.
+            'height': '25em' // CSS unit (percent).
+        })
         .catch(error => {
             console.error(error);
+
         });
     ClassicEditor
-        .create(document.querySelector('#inpPostContent'))
+        .create(document.querySelector('#inpPostContent'), {
+            'width': '95%', // 500 pixels wide.
+            'height': '25em' // CSS unit (percent).
+        })
         .catch(error => {
             console.error(error);
         });
