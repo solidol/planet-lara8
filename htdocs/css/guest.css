@@ -1,0 +1,140 @@
+/* общее */
+
+.container-fluid {
+    padding: 0;
+}
+
+
+.sidebar-fixed {
+    top: 5rem;
+}
+
+body.front {
+    background-color: #151515;
+    color: #B0B0B0;
+    font-size: 12px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h1 a,
+h2 a,
+h3 a {
+    color: #00AEEF;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+h4 {
+    font-size: 110%;
+}
+
+.btn-blue {
+    background-color: #00AEEF;
+    color: #FFFFFF;
+}
+
+
+/* общее конец */
+
+
+/* navbar */
+
+.navbar-custom {
+    --bs-bg-opacity: 0.7;
+    background-color: rgba(20, 26, 43, 0.7);
+    text-decoration: none;
+}
+
+.navbar-custom a.nav-link {
+    color: #00AEEF !important;
+    font-weight: 600;
+    font-size: 120%;
+}
+
+/* navbar end*/
+
+/* блок статей   */
+
+.post-image {
+    text-align: center;
+}
+
+img.post-image {
+    max-width: 100%;
+    min-width: 80%;
+    margin: auto;
+}
+
+.post-paper {
+    text-indent: 1.5rem;
+    text-align: justify;
+    padding: 0.5rem;
+}
+
+.post-paper p {
+    margin: 0;
+}
+
+article {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+/* блок статей  конец */
+
+/* блок сеансов на главной */
+
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: #151515;
+    border-color: #00AEEF;
+    margin: 0.3rem;
+}
+
+.session-text {
+    height: 10rem;
+}
+
+
+.session-text p {
+    padding: 0 0.2rem 0 0.2rem;
+    margin: 0;
+    text-align: justify;
+
+}
+
+.session-dow {
+    background-color: #00AEEF;
+    color: black;
+    font-weight: 900;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+}
+
+.session-date {
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+    font-weight: 900;
+}
+
+.session-time {
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+    font-weight: 900;
+}
+
+.session-day {
+    padding: 0.5rem;
+    margin: 1rem 0 1rem 0;
+}
+
+/* блок сеансов на главной конец */

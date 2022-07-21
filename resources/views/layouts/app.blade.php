@@ -11,14 +11,19 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!--<script src="{{ asset('js/app.js') }}"></script>-->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 
 </head>
@@ -112,12 +117,20 @@
                             <img class="d-block w-100" src="/images/banner/banner4.jpg" alt="Third slide">
                         </div>
                     </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanners" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselBanners" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
 
                 <script>
                     $(document).ready(function() {
                         $('#carouselBanners').carousel({
-                            interval: 4000,
+                            interval: 3000,
                             ride: true
                         });
                     });

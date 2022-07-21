@@ -1,0 +1,24 @@
+.row-hovered :hover {
+    background-color: darkgrey;
+}
+
+
+.admin-left-navbar li {
+    background-color: grey;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    margin: 0.2rem;
+}
+
+.admin-left-navbar li a {
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+    font-size: 120%;
+    display: inline-block;
+}
+
+
+.ck-editor__editable {
+    min-height: 200px;
+}
