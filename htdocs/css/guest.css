@@ -34,7 +34,8 @@ h4 {
 
 .btn-blue {
     background-color: #00AEEF;
-    color: #FFFFFF;
+    color: #000000;
+    font-weight: 700;
 }
 
 
@@ -88,6 +89,12 @@ article {
 /* блок статей  конец */
 
 /* блок сеансов на главной */
+
+
+
+
+
+
 
 .cards-wrapper {
     display: flex;

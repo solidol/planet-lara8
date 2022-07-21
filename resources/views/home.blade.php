@@ -9,104 +9,115 @@
 @section('content')
 
 
+
+
 <div class="row">
     <div class="col-6">
         <h2 class="mb-3">СЕАНСИ ДЛЯ ВСІХ</h2>
     </div>
     <div class="col-6 text-right">
-        <button class="btn btn-sm btn-blue" type="button" data-bs-target="#carouselSessions" data-bs-slide="prev">
+        <button class="slick-prev btn btn-sm btn-blue" type="button">
             <i class="fa fa-arrow-left"></i>
         </button>
-        <button class="btn btn-sm btn-blue" type="button" data-bs-target="#carouselSessions" data-bs-slide="next">
+        <button class="slick-next slick-arrow btn btn-sm btn-blue" type="button">
             <i class="fa fa-arrow-right"></i>
         </button>
     </div>
     <div class="col-12">
         <div id="carouselSessions" class="carousel slide" data-ride="carousel">
 
-            <div class="carousel-inner">
+            <?php
+            $days = array(
+                'НД',
+                'ПН',
+                'ВТ',
+                'СР',
+                'ЧТ',
+                'ПТ',
+                'СБ'
+            );
+            $i = 0;
+            foreach ($sessions as $session) :
+                $date = date_create($session->tg_date);
 
+            ?>
+                <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
 
-                <?php
-                $days = array(
-                    'НД',
-                    'ПН',
-                    'ВТ',
-                    'СР',
-                    'ЧТ',
-                    'ПТ',
-                    'СБ'
-                );
-                $i = 0;
-                while (isset($sessions[$i])) :
-                    $date = date_create($sessions[$i]->tg_date);
-
-                ?>
-                    <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
-                        <div class="cards-wrapper">
-                            <div id="art-{{ $sessions[$i]->id }}" class="card">
-                                <div class="card-body">
-                                    <div class="session-day">
-                                        <span class="session-dow"><?= $days[date_format($date, "w")] ?></span>
-                                        <span class="session-date"><?= date_format($date, "d.m.y") ?></span> о
-                                        <span class="session-time"><?= date_format($date, "H:i") ?></span>
-                                    </div>
-                                    <h3 class="session-title">
-                                        <a href="{{ route('post.showbyslug', ['postSlug' => $sessions[$i]->slug]) }}">{{ $sessions[$i]->title }}</a>
-                                    </h3>
-                                    <div class="session-text">
-                                        <?= $sessions[$i]->content ?>
-                                    </div>
-                                    <div class="sessions-bottom">
-                                        <a class="btn btn-sm btn-blue" target="_blank" href="https://www.privat24.ua/rd/send_qr/liqpay_static_qr/qr_6fcdb890b8064aed9dbb9e175d9ec0cf">Сплатити онлайн</a>
-                                    </div>
-                                </div>
-
+                    <div id="art-{{ $session->id }}" class="card">
+                        <div class="card-body">
+                            <div class="session-day">
+                                <span class="session-dow"><?= $days[date_format($date, "w")] ?></span>
+                                <span class="session-date"><?= date_format($date, "d.m.y") ?></span> о
+                                <span class="session-time"><?= date_format($date, "H:i") ?></span>
                             </div>
-
-                            <?php
-                            $i++;
-                            if (isset($sessions[$i])) :
-                            ?>
-
-                                <div id="art-{{ $sessions[$i]->id }}" class="card d-none d-md-block">
-                                    <div class="card-body">
-                                        <div class="session-day">
-                                            <span class="session-dow"><?= $days[date_format($date, "w")] ?></span>
-                                            <span class="session-date"><?= date_format($date, "d.m.y") ?></span> о
-                                            <span class="session-time"><?= date_format($date, "H:i") ?></span>
-                                        </div>
-                                        <h3 class="session-title">
-                                            <a href="{{ route('post.showbyslug', ['postSlug' => $sessions[$i]->slug]) }}">{{ $sessions[$i]->title }}</a>
-                                        </h3>
-                                        <div class="session-text">
-                                            <?= $sessions[$i]->content ?>
-                                        </div>
-                                        <div class="sessions-bottom">
-                                            <a class="btn btn-sm btn-blue" target="_blank" href="https://www.privat24.ua/rd/send_qr/liqpay_static_qr/qr_6fcdb890b8064aed9dbb9e175d9ec0cf">Сплатити онлайн</a>
-                                        </div>
-                                    </div>
-
-                                </div>
+                            <h3 class="session-title">
+                                <a href="{{ route('post.showbyslug', ['postSlug' => $session->slug]) }}">{{ $session->title }}</a>
+                            </h3>
+                            <div class="session-text">
+                                <?= $session->content ?>
+                            </div>
+                            <div class="sessions-bottom">
+                                <a class="btn btn-sm btn-blue" target="_blank" href="https://www.privat24.ua/rd/send_qr/liqpay_static_qr/qr_6fcdb890b8064aed9dbb9e175d9ec0cf">Сплатити онлайн</a>
+                            </div>
                         </div>
+
                     </div>
+                </div>
 
             <?php
-                            endif;
-                            $i++;
-                        endwhile;
+                $i++;
+
+            endforeach;
             ?>
 
-            </div>
+
         </div>
     </div>
 </div>
 
 <script>
     $(document).ready(function() {
-        $('#carouselSessions').carousel({
-            interval: 5000,
-            // ride: true
+        /*  $('#carouselSessions').carousel({
+              interval: 5000,
+              // ride: true
+          });*/
+
+        $('#carouselSessions').slick({
+            autoplay: false,
+            autoplaySpeed: 2000,
+            arrows: true,
+            prevArrow: $('.slick-prev'),
+            nextArrow: $('.slick-next'),
+            responsive: [{
+                    breakpoint: 1920,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false
+
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false
+
+                    }
+                }
+            ],
         });
     });
 </script>
