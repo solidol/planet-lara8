@@ -29,11 +29,14 @@
 
 
     <div class="row form-group">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <label for="inpPostPrew">Попередній перегляд</label>
             <textarea id="inpPostPrew" class="ckeditor" name="alterpreview"><?= isset($post->alterpreview) ? $post->alterpreview : '' ?></textarea>
         </div>
-        <div class="col-sm-6">
+    </div>
+    
+    <div class="row form-group">
+        <div class="col-sm-12">
             <label for="inpPostContent">Основний контент</label>
             <textarea id="inpPostContent" class="ckeditor" name="content"><?= isset($post->content) ? $post->content : '' ?></textarea>
         </div>
@@ -62,17 +65,9 @@
 
 
 <script>
-    ClassicEditor
-        .create(document.querySelector('#inpPostPrew'), {})
-        .catch(error => {
-            console.error(error);
+    var editor1 = new RichTextEditor("#inpPostPrew");
 
-        });
-    ClassicEditor
-        .create(document.querySelector('#inpPostContent'), {})
-        .catch(error => {
-            console.error(error);
-        });
+    var editor1 = new RichTextEditor("#inpPostContent");
 </script>
 
 

@@ -29,7 +29,7 @@ Route::get('/projects', 'PostCategoryController@showProjects')->name('projects.s
 Route::get('/sessions', 'PostCategoryController@showSessions')->name('sessions.show');
 
 Route::get('/posts/pid:{postId}', 'PostController@show')->name('post.show');
-Route::get('/posts/{postSlug}', 'PostController@showBySlug')->name('post.showbyslug');
+Route::get('/posts/{postSlug}.html', 'PostController@showBySlug')->name('post.showbyslug');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/news', 'PostCategoryController@adminShowNews')->name('admin.news.show');

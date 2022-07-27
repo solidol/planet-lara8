@@ -14,8 +14,11 @@
     <!--<script src="{{ asset('js/app.js') }}"></script>-->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/rte.js') }}"></script>
 
+<script>RTE_DefaultConfig.url_base='/js'</script>
+    <script src="{{ asset('js/script.js') }}"></script>
+    <link rel="stylesheet" href="/js/rte_theme_default.css" />
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">

@@ -31,72 +31,7 @@
 
 <body class="front">
     <div id="app">
-        <nav class="navbar navbar-dark navbar-custom fixed-top navbar-expand-md shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{  route('home.show')  }}">
-                    <img src="/storage/images/logo/headerlogo.svg">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.post.create', ['catId' => $currentCat->id ?? '0']) }}" class="button">Новий запис</a>
-                        </li>
-                        @endauth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('news.show') }}">Новини</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blog.show') }}">Блоґ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('programs.show') }}">Програми</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('projects.show') }}">Проєкти</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('sessions.show') }}">Сеанси</a>
-                        </li>
-                        @guest
-                        @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('admin.news.show') }}">Адмінпанель</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @include('menu')
 
         <main>
             <div class="container-fluid">
@@ -151,21 +86,8 @@
                                 <p>Тепер сплатити за сеанс можна, перерахувавши кошти з вашого віртуального рахунку за посиланням: <a href="https://www.privat24.ua/rd/send_qr/liqpay_static_qr/qr_6fcdb890b8064aed9dbb9e175d9ec0cf">privat24</a></p>
                             </div>
                             <div class="p-4">
-                                <h2>Архів</h2>
-                                <ol class="list-unstyled mb-0">
-                                    <li><a href="#">March 2021</a></li>
-                                    <li><a href="#">February 2021</a></li>
-                                    <li><a href="#">January 2021</a></li>
-                                    <li><a href="#">December 2020</a></li>
-                                    <li><a href="#">November 2020</a></li>
-                                    <li><a href="#">October 2020</a></li>
-                                    <li><a href="#">September 2020</a></li>
-                                    <li><a href="#">August 2020</a></li>
-                                    <li><a href="#">July 2020</a></li>
-                                    <li><a href="#">June 2020</a></li>
-                                    <li><a href="#">May 2020</a></li>
-                                    <li><a href="#">April 2020</a></li>
-                                </ol>
+                                @yield('sidebar')
+
                             </div>
 
                         </div>

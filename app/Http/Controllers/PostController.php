@@ -24,9 +24,7 @@ class PostController extends Controller
     public function show($postId, $view = 'posts.post-show')
     {
         $post = Post::findOrFail($postId);
-
-        $post_data = explode("\n", $post->content);
-        $post->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+        $post->setPTag();
         if ($post->postimg == '') {
             $post->postimg = 'images/services/no-image.png';
         }
@@ -43,8 +41,7 @@ class PostController extends Controller
     {
         $post = Post::where('slug', $postSlug)->firstOrFail();
 
-        $post_data = explode("\n", $post->content);
-        $post->content = "<p>" . implode("</p><p>", array_values($post_data)) . "</p>";
+        $post->setPTag();
         if ($post->postimg == '') {
             $post->postimg = 'images/services/no-image.png';
         }
@@ -56,20 +53,25 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($postId);
         $categories = PostCategory::all();
-        return view('admin.post-create', 
-        ['post' => $post, 
-        'categories' => $categories, 
-        'catId' => $post->post_category_id,
-        'route' => 'admin.post.update'
-    ]);
+        return view(
+            'admin.post-create',
+            [
+                'post' => $post,
+                'categories' => $categories,
+                'catId' => $post->post_category_id,
+                'route' => 'admin.post.update'
+            ]
+        );
     }
 
     public function create($catId)
     {
         $categories = PostCategory::all();
-        return view('admin.post-create', ['catId' => $catId, 
-        'categories' => $categories,
-        'route' => 'admin.post.store']);
+        return view('admin.post-create', [
+            'catId' => $catId,
+            'categories' => $categories,
+            'route' => 'admin.post.store'
+        ]);
     }
 
     public function store(Request $request)

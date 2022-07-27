@@ -8,6 +8,7 @@
 @endsection
 
 
+
 @section('content')
 
 
@@ -31,10 +32,10 @@
         @endauth
     </div>
     <div class="row">
-        <div class="col-4 post-image">
-            <img src="/storage/{{$post->postimg}}">
+        <div class="col-12">
+            <img class="post-image" src="/storage/{{$post->postimg}}">
         </div>
-        <div class="col-8 post-paper">
+        <div class="col-12 post-paper">
             <?= $post->content ?>
         </div>
     </div>
