@@ -44,7 +44,7 @@
                         <li><a class="dropdown-item" href="#">Контакти</a></li>
                         <li><a class="dropdown-item" href="#">Про нас</a></li>
                         <li><a class="dropdown-item" href="{{route('post.showbyslug',['postSlug'=>'hystory-ua'])}}">Історія</a></li>
-                        <li><a class="dropdown-item" href="#">Публічна оферта</a></li>
+                        <li><a class="dropdown-item" href="{{route('post.showbyslug',['postSlug'=>'pub-off-ua'])}}">Публічна оферта</a></li>
                     </ul>
                 </li>
                 @guest
